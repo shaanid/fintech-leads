@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('investor_id')->constrained()->onDelete('cascade');
             $table->decimal('funded_amount', 12, 2);
             $table->timestamps();
+            $table->index(['investor_id', 'lead_id'], 'investor_lead_index');
         });
     }
 

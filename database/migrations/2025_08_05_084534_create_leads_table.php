@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('merchant_name');
             $table->decimal('requested_amount', 12, 2);
-            $table->integer('lead_score');
-            $table->boolean('is_assigned')->default(0);
+            $table->integer('lead_score')->index();
+            $table->boolean('is_assigned')->default(0)->index();
             $table->timestamps();
+            $table->index(['lead_score', 'is_assigned'], 'lead_score_assigned_index');
         });
     }
 
