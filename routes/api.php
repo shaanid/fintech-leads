@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('login', [AuthController::class, 'login']);
-Route::post('logout', [AuthController::class, 'logout']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('import-leads', [LeadsController::class, 'importLeads']);
     Route::get('dashboard/summary', [DashboardController::class, 'summary']);
     Route::post('merchant/{id}/upload-bank-statement', [BankStatementController::class, 'uploadStatement']);
+    Route::post('logout', [AuthController::class, 'logout']);
 });
